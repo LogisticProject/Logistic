@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="logistic1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="255" />
+    <Property Name="FirstName" Type="varchar" MaxLength="255" />
+    <Property Name="LastName" Type="varchar" MaxLength="255" />
+    <Property Name="PhoneNumber" Type="int" />
+    <Property Name="OfficeNumber" Type="int" />
+    <Property Name="Fax" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="ProviderID" Type="int" />
+  </EntityType>
+  <EntityType Name="Notes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Note" Type="varchar" MaxLength="255" />
+    <Property Name="ProviderID" Type="int" />
+  </EntityType>
+  <EntityType Name="Providers">
+    <Key>
+      <PropertyRef Name="ProviderID" />
+    </Key>
+    <Property Name="ProviderID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Address1" Type="varchar" MaxLength="255" />
+    <Property Name="Address2" Type="varchar" MaxLength="255" />
+    <Property Name="Address3" Type="varchar" MaxLength="255" />
+    <Property Name="Country" Type="varchar" MaxLength="255" />
+    <Property Name="City" Type="varchar" MaxLength="255" />
+    <Property Name="Phone" Type="int" />
+    <Property Name="Fax" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Contacts__Provid__45F365D3">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ProviderID" />
+      </Principal>
+      <Dependent Role="Contacts">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notes__ProviderI__3D5E1FD2">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ProviderID" />
+      </Principal>
+      <Dependent Role="Notes">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Providers__UserI__4316F928">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Providers" Type="Self.Providers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Providers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="logistic1ModelStoreContainer">
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Contacts__Provid__45F365D3" Association="Self.FK__Contacts__Provid__45F365D3">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="Contacts" EntitySet="Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notes__ProviderI__3D5E1FD2" Association="Self.FK__Notes__ProviderI__3D5E1FD2">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="Notes" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Providers__UserI__4316F928" Association="Self.FK__Providers__UserI__4316F928">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Providers" EntitySet="Providers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
