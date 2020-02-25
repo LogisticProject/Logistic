@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Provider } from'./Provider';
+import { Provider } from'../provider';
 import { ShipmentAppServiceService } from'../shipment-app-service.service';
+
+
+
 @Component({
   selector: 'app-provider',
   templateUrl: './provider.component.html',

@@ -12,21 +12,24 @@ using LogiApi.Models;
 
 namespace LogiApi.Controllers
 {
+    [RoutePrefix("Api/Providers")]
     public class ProvidersController : ApiController
     {
         private logistic1Entities db = new logistic1Entities();
 
-        // GET: api/Providers
+        [HttpGet]
+        [Route("AllProviders")]
         public IQueryable<Provider> GetProviders()
         {
             return db.Providers;
         }
 
-        // GET: api/Providers/5
+        [HttpGet]
+        [Route("GetProviderDetails/{userId}")]
         [ResponseType(typeof(Provider))]
-        public IHttpActionResult GetProvider(int id)
+        public IHttpActionResult GetProvider(int userId)
         {
-            Provider provider = db.Providers.Where(p => p.UserID == id).FirstOrDefault();
+            Provider provider = db.Providers.Where(p => p.UserID == userId).FirstOrDefault();
 
             if (provider == null)
             {
@@ -36,7 +39,8 @@ namespace LogiApi.Controllers
             return Ok(provider);
         }
 
-        // PUT: api/Providers/5
+        [HttpPut]
+        [Route("UpdateProvider")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProvider(int id, Provider provider)
         {
