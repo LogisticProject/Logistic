@@ -26,7 +26,8 @@ namespace LogiApi.Controllers
         [ResponseType(typeof(Provider))]
         public IHttpActionResult GetProvider(int id)
         {
-            Provider provider = db.Providers.Find(id);
+            Provider provider = db.Providers.Where(p => p.UserID == id).FirstOrDefault();
+
             if (provider == null)
             {
                 return NotFound();

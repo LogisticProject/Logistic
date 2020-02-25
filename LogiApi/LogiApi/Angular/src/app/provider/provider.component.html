@@ -1,0 +1,132 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="LogIn">Shipment Management System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="Contact">Contact <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">LogOut <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h1>Providers Information</h1>
+<table id="table" class="table table-striped">
+  <thead class="thead-dark">
+    <th>
+      <tr>
+        ID
+      </tr>
+      <tr>
+        Account Number
+      </tr>
+      <tr>
+        Provider Name
+      </tr>
+
+      <tr>
+       Provider Address 1
+      </tr>
+      <tr>
+        Provider Address 2
+      </tr>
+      <tr>
+        Provider Address 3
+      </tr>
+      <tr>
+      Country
+    </tr>
+      <tr>
+      City
+    </tr>
+      <tr>
+        State
+      </tr>
+      <tr>
+      ZipCode
+    </tr>
+      <tr>
+        Phone
+      </tr>
+      <tr>
+        fax
+      </tr>
+      <tr>
+      Email
+    </tr>
+      <tr>
+       TimeZone
+      </tr>
+     <tr>
+        active
+      </tr>
+      <tr>
+       ratesigned
+      </tr>
+      <tr>
+        Primary
+      </tr>
+
+    </th>
+  </thead>
+  <tbody>
+    <td *ngFor="let Po of Provider ">
+      <tr>
+
+        {{Po.Id}}
+      </tr>
+      <tr>
+          {{Po.AccountNumber}}
+        </tr>
+        {{Po.ProviderName}}
+        <tr>
+          {{Po.ProviderAddress1}}
+        </tr>
+
+        <tr>
+          {{Po.ProviderAddress2}}
+        </tr>
+        <tr>
+          {{Po.ProviderAddress3}}
+        </tr>
+        <tr>
+          {{Po.country}}
+        </tr>
+
+        <tr>
+          {{Po.city}}
+        </tr>
+        <tr>
+          {{Po.state}}
+        </tr>
+        <tr>
+          {{Po.zipcode}}
+        </tr>
+        <tr>
+          {{Po.phone}}
+        </tr>
+        <tr>
+          {{Po.fax}}
+        </tr>
+        <tr>
+          {{Po.Email}}
+        </tr>
+          <tr>
+            {{Po.TimeZone}}
+          </tr>
+          <tr>
+            {{Po.active}}
+          </tr>
+          <tr>
+            {{Po.ratesigned}}
+          </tr>
+            <tr>
+              {{Po.primarys}}
+            </tr>
+    </td>
+  </tbody>
+</table>
