@@ -13,16 +13,22 @@
     </div> -->
 
     <!-- Login Form -->
-     <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
 
-      <input type="text" id="login" #name="ngModel" class="fadeIn second" name="login" required placeholder="UserName" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="user.UserName">
-<br/>
-      <small class="text-danger" [class.d-none]="name.valid || name.untouched">User Name is required</small>
-      <input type="password" id="password"  #name="ngModel" class="fadeIn third" name="login" required placeholder="password" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="user.password">
-     <br/>
-      <small class="text-danger" [class.d-none]="name.valid || name.untouched">Password is required</small>
-<br/>
-      <input [disabled]="userForm.invalid" type="submit" class="fadeIn fourth" value="Log In" (click) ="success()">
+      <div class="container-fluid">
+        <h2 class="form-signin-heading">Login</h2>
+        <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
+        <br />
+        <label for="UserName" class="sr-only">Email address</label>
+        <input type="email" id="UserName" name="UserName" ngModel class="form-control" placeholder="User Name" required
+          autofocus>
+        <br />
+        <label for="Password" class="sr-only">Password</label>
+        <input type="password" id="Password" name="Password" ngModel class="form-control" placeholder="Password"
+          required>
+        <br />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </div>
 
     </form>
 
