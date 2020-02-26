@@ -1,0 +1,140 @@
+
+<button routerLink="/addContact">Add Contact </button>
+
+<div class="row">
+
+<div class="col-sm-9 col-md-6 col-lg-6">
+
+<table style="width: 50%;" *ngIf="!null">
+
+    <tr >
+      <th>
+        <p>Name:</p>
+      </th>
+      <td><p>{{ provider.ProviderName | titlecase}}</p></td>
+      </tr>
+      <tr>
+        <th>
+          <p>Account Number:</p>
+        </th>
+        <td><p>{{ provider.AccountNumber }}</p></td>
+        </tr>
+
+        <tr>
+          <th>
+            <p>Address1:</p>
+          </th>
+          <td><p>{{ provider.ProviderAddress1 }}</p></td>
+          </tr>
+          <tr>
+            <th>
+              <p>Address2:</p>
+            </th>
+            <td><p>{{ provider.ProviderAddress2 }}</p></td>
+            </tr>
+            <tr>
+              <th>
+                <p>Address3:</p>
+              </th>
+              <td><p>{{ provider.ProviderAddress3 }}</p></td>
+              </tr>
+              <tr>
+                <th>
+                  <p>Country:</p>
+                </th>
+                <td><p>{{ provider.country }}</p></td>
+                <th>
+                  <p>state:</p>
+                  </th>
+                  <td>
+                    <p>{{ provider.state}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <p>City:</p>
+                  </th>
+                  <td><p>{{ provider.city }}</p></td>
+                  <th>
+                    <p>zipcode:</p>
+                    </th>
+                    <td>
+                      <p>{{ provider.zipcode}}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>Phone:</p>
+                    </th>
+                    <td><p>{{ provider.phone }}</p></td>
+                    <th>
+                      <p>Fax:</p>
+                      </th>
+                      <td>
+                        <p>{{ provider.fax}}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        <p>Email:</p>
+                      </th>
+                      <td><p>{{ provider.Email }}</p></td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <p>TimeZone:</p>
+                        </th>
+                        <td><p>{{ provider.TimeZone }}</p></td>
+                        </tr>
+                        <tr>
+                          <th>
+                            <p>active:</p>
+                          </th>
+                          <td>
+                          <p> {{provider.active}}</p></td>
+
+                          <th>
+                            <p >RateSigned:</p>
+                            </th>
+                            <td><p> {{provider.ratesigned}} </p></td>
+                            <th>
+                              <p> Primary: </p>
+                              </th>
+                              <td><p>{{provider.primarys}}</p></td>
+    </tr>
+
+
+  </table>
+</div>
+<div class="col-sm-9 col-md-6 col-lg-6">
+<table style="width: 50%;">
+
+  <tr>
+    <th>
+      <p>Cotact Name:</p>
+      </th>
+      <td><p>{{contact[0].FName}}</p></td>
+    </tr>
+
+    <tr>
+      <th>
+        <p>Cotact Email:</p>
+        </th>
+        <td><p>{{contact[0].Email}}</p></td>
+      </tr>
+
+      <tr>
+        <th>
+          <p>Cotact Phone:</p>
+          </th>
+          <td><p>{{contact[0].Mobile}}</p></td>
+        </tr>
+        <tr>
+          <th>
+            <p>Cotact Type:</p>
+            </th>
+            <td><p>{{contact[0].title}}</p></td>
+          </tr>
+</table>
+</div>
+</div>
