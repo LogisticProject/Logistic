@@ -34,6 +34,37 @@ namespace LogiApi.Controllers
 
             return Ok(user);
         }
+        [Route("api/Login")]
+        [HttpPost]
+        public IHttpActionResult Authenticate([FromBody] User login)
+        {
+            User loginrequest = new User { };
+            loginrequest.UserName = login.UserName;
+            loginrequest.Password = login.Password;
+
+            HttpResponseMessage responseMsg = new HttpResponseMessage();
+            bool isUsernamePasswordValid = false;
+
+            if (login != null)
+            {
+                foreach (var i in db.Users)
+                {
+                    if (loginrequest.UserName == i.UserName && loginrequest.Password == i.Password)
+                    {
+                        isUsernamePasswordValid = true;
+                    }
+                }
+            }
+
+            if (isUsernamePasswordValid)
+            {
+                string token = TokenManager.GenerateToken(loginrequest.UserName);
+                //return token
+                return Ok<string>(token);
+            }
+            else
+                return Unauthorized();
+        }
 
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
