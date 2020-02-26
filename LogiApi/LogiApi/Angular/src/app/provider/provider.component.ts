@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Provider } from'../provider';
 import { ShipmentAppServiceService } from'../shipment-app-service.service';
-
-
+import { ProviderService } from '../provider.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-provider',
@@ -10,16 +10,38 @@ import { ShipmentAppServiceService } from'../shipment-app-service.service';
   styleUrls: ['./provider.component.css']
 })
 export class ProviderComponent implements OnInit {
-public Provider = [];
+  
+public provider: Provider;
 public errorMsg;
-  constructor(private ProviderSer: ShipmentAppServiceService) { }
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute, private ProviderSer: ProviderService, private router: Router) { }
 
-    this.ProviderSer.getProviders().subscribe(data =>(this.Provider = data),
-    error => (this.errorMsg = error),
-    () => console.log("the sequence completed")
+getProviderDetails(id:string){
+
+  this.ProviderSer.getProviderById(id).subscribe(data =>(this.provider = data),
+  error => (this.errorMsg = error),
+  () => console.log("the sequence completed")
+  );
+}
+
+deleteProvider(id: any) {
+  if (confirm("Are you sure you want to delete this Provider?")){
+    this.ProviderSer.deleteProviderById(id)
+    .subscribe(res => {
+        this.router.navigate(['/Provider']);
+      }, (err) => {
+        console.log(err);
+      }
     );
   }
+}
+
+  ngOnInit() {
+
+    this.getProviderDetails("2");
+  }
+
+
+
 
 }

@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { ProvidereditComponent } from './provideredit/provideredit.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ProviderComponent,
     ShipmentAppPipePipe,
     ShipmentAppdirectiveDirective,
-    ContactComponent
+    ContactComponent,
+    ProvidereditComponent
   ],
   imports: [
     BrowserModule,

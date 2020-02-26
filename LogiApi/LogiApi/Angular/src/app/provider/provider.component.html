@@ -14,118 +14,42 @@
     </ul>
   </div>
 </nav>
-<h1>Providers Information</h1>
-<table id="table" class="table table-striped">
-  <thead class="thead-dark">
-    <th>
+<h1>Provider Information</h1>
+<table id="table" class="table table-striped thead-dark">
       <tr>
-        ID
+        ID: {{provider.ProviderID}}
       </tr>
       <tr>
-        Account Number
+        Provider Name : {{provider.Name}}
       </tr>
       <tr>
-        Provider Name
+       Provider Address 1 : {{provider.Address1}}
       </tr>
       <tr>
-       Provider Address 1
+        Provider Address 2 : {{provider.Address2}}
       </tr>
       <tr>
-        Provider Address 2
+        Provider Address 3 : {{provider.Address3}}
       </tr>
       <tr>
-        Provider Address 3
-      </tr>
-      <tr>
-      Country
+      Country : {{provider.Country}}
     </tr>
       <tr>
-      City
+      City : {{provider.City}}
     </tr>
       <tr>
-        State
+        Phone : {{provider.Phone}}
       </tr>
       <tr>
-      ZipCode
+        fax : {{provider.Fax}}
+      </tr>
+      <tr>
+      Email : {{provider.Email}}
     </tr>
-      <tr>
-        Phone
-      </tr>
-      <tr>
-        fax
-      </tr>
-      <tr>
-      Email
-    </tr>
-      <tr>
-       TimeZone
-      </tr>
-     <tr>
-        active
-      </tr>
-      <tr>
-       ratesigned
-      </tr>
-      <tr>
-        Primary
-      </tr>
+  </table>
 
-    </th>
-  </thead>
-  <tbody>
-    <td *ngFor="let Po of Provider ">
-      <tr>
+  <mat-card-actions>
+      <a mat-raised-button class="buttonStyle" color="primary">Edit</a>
+      <a mat-raised-button color="primary" (click)="deleteProvider(provider.ProviderID)"> Delete </a>
+</mat-card-actions>
 
-        {{Po.Id}}
-      </tr>
-      <tr>
-          {{Po.AccountNumber}}
-        </tr>
-        {{Po.ProviderName}}
-        <tr>
-          {{Po.ProviderAddress1}}
-        </tr>
-
-        <tr>
-          {{Po.ProviderAddress2}}
-        </tr>
-        <tr>
-          {{Po.ProviderAddress3}}
-        </tr>
-        <tr>
-          {{Po.country}}
-        </tr>
-
-        <tr>
-          {{Po.city}}
-        </tr>
-        <tr>
-          {{Po.state}}
-        </tr>
-        <tr>
-          {{Po.zipcode}}
-        </tr>
-        <tr>
-          {{Po.phone}}
-        </tr>
-        <tr>
-          {{Po.fax}}
-        </tr>
-        <tr>
-          {{Po.Email}}
-        </tr>
-          <tr>
-            {{Po.TimeZone}}
-          </tr>
-          <tr>
-            {{Po.active}}
-          </tr>
-          <tr>
-            {{Po.ratesigned}}
-          </tr>
-            <tr>
-              {{Po.primarys}}
-            </tr>
-    </td>
-  </tbody>
-</table>

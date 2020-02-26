@@ -174,3 +174,6 @@ C:\Users\Doubtless\source\repos\Logistic\LogiApi\LogiApi\obj\Debug\LogiApi.cspro
 C:\Users\Doubtless\source\repos\Logistic\LogiApi\LogiApi\obj\Debug\LogiApi.csproj.CopyComplete
 C:\Users\Doubtless\source\repos\Logistic\LogiApi\LogiApi\obj\Debug\LogiApi.dll
 C:\Users\Doubtless\source\repos\Logistic\LogiApi\LogiApi\obj\Debug\LogiApi.pdb
+C:\Users\Doubtless\source\repos\Logistic\LogiApi\LogiApi\bin\System.Web.Cors.dll
+C:\Users\Doubtless\source\repos\Logistic\LogiApi\LogiApi\bin\System.Web.Http.Cors.dll
+C:\Users\Doubtless\source\repos\Logistic\LogiApi\LogiApi\bin\System.Web.Http.Cors.xml

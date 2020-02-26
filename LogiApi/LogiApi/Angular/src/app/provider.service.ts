@@ -28,13 +28,13 @@ export class ProviderService {
 
   updateProvider(provider: Provider): Observable<Provider> {  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.put<Provider>(this.url + '/UpdateEmployeeDetails/',  
+    return this.http.put<Provider>(this.url + '/UpdateProvider/',  
     provider, httpOptions);  
   }  
 
   deleteProviderById(providerid: string): Observable<number> {  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.delete<number>(this.url + '/DeleteEmployeeDetails?id=' +providerid,  
+    return this.http.delete<number>(this.url + '/DeleteProvider?id=' +providerid,  
  httpOptions);  
   }  
 

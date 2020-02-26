@@ -105,11 +105,12 @@ namespace LogiApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = provider.ProviderID }, provider);
         }
 
-        // DELETE: api/Providers/5
+        [HttpDelete]
+        [Route("DeleteProvider")]
         [ResponseType(typeof(Provider))]
-        public IHttpActionResult DeleteProvider(int id)
+        public IHttpActionResult DeleteProvider(int userId)
         {
-            Provider provider = db.Providers.Find(id);
+            Provider provider = db.Providers.Find(userId);
             if (provider == null)
             {
                 return NotFound();
