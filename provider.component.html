@@ -1,0 +1,36 @@
+
+<h1>Providers Information</h1>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+     <th scope="col">
+       Details
+      </th>
+      <th scope="col">
+        Account Number
+      </th>
+      <th>
+        Provider Name
+      </th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Po of Provider ">
+      <td>
+        <!-- <a [routerLink]="['./', Po.Id], [./, Po.contact]"> -->
+        <a [routerLink]="['./', Po.Id]">
+        <button><span hidden>{{ Po.Id }}</span> Details</button>
+        </a>
+      </td>
+        <td>
+          {{Po.AccountNumber}}
+        </td>
+        <td>
+        {{Po.ProviderName}}
+       </td>
+
+    </tr>
+  </tbody>
+</table>
