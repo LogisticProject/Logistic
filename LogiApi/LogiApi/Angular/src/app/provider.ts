@@ -1,15 +1,18 @@
 export class Provider {
 
-    ProviderID:number;
-    Name:string;
-    Address1: string;
-    Address2: string;
-    Address3: string;
-    Country:string;
-    City:string;
-    Phone:string;
-    Fax:string;
-    Email:string;
-    UserID:string;
-    
+    public ProviderID:number;
+    public AccountNumber: number;
+    public Name:string;
+    public Address1: string;
+    public Address2: string;
+    public Address3: string;
+    public Country:string;
+    public City:string;
+    public Phone:string;
+    public Fax:string;
+    public Email:string;
+    public UserID:number;
+    public State:string;
+    public Zipcode:string;
+    public Timezone:string;
 }

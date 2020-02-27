@@ -20,6 +20,10 @@ export class ProviderService {
     return this.http.get<Provider>(this.url + '/GetProviderDetails/' + userId);  
   }  
 
+  getProviderByProviderId(providerId: string): Observable<Provider> {  
+    return this.http.get<Provider>(this.url + '/GetProviderById/' + providerId);  
+  }  
+
   createProvider(provider: Provider): Observable<Provider> {  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
     return this.http.post<Provider>(this.url + '/InsertEmployeeDetails/',  
@@ -28,14 +32,12 @@ export class ProviderService {
 
   updateProvider(provider: Provider): Observable<Provider> {  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.put<Provider>(this.url + '/UpdateProvider/',  
-    provider, httpOptions);  
+    return this.http.put<Provider>(this.url + '/UpdateProvider', provider, httpOptions);  
   }  
 
   deleteProviderById(providerid: string): Observable<number> {  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.delete<number>(this.url + '/DeleteProvider?id=' +providerid,  
- httpOptions);  
+    return this.http.delete<number>(this.url + '/DeleteProvider?id='+providerid, httpOptions);  
   }  
 
 }  

@@ -39,19 +39,29 @@ namespace LogiApi.Controllers
             return Ok(provider);
         }
 
+        [HttpGet]
+        [Route("GetProviderById/{providerId}")]
+        [ResponseType(typeof(Provider))]
+        public IHttpActionResult GetProviderById(int providerId)
+        {
+            Provider provider = db.Providers.Find(providerId);
+
+            if (provider == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(provider);
+        }
+
         [HttpPut]
         [Route("UpdateProvider")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProvider(int id, Provider provider)
+        public IHttpActionResult PutProvider(Provider provider)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
-
-            if (id != provider.ProviderID)
-            {
-                return BadRequest();
             }
 
             db.Entry(provider).State = EntityState.Modified;
@@ -62,7 +72,7 @@ namespace LogiApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProviderExists(id))
+                if (!ProviderExists(provider.ProviderID))
                 {
                     return NotFound();
                 }
@@ -108,9 +118,9 @@ namespace LogiApi.Controllers
         [HttpDelete]
         [Route("DeleteProvider")]
         [ResponseType(typeof(Provider))]
-        public IHttpActionResult DeleteProvider(int userId)
+        public IHttpActionResult DeleteProvider(int id)
         {
-            Provider provider = db.Providers.Find(userId);
+            Provider provider = db.Providers.Find(id);
             if (provider == null)
             {
                 return NotFound();

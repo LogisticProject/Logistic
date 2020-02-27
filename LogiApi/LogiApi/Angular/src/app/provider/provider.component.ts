@@ -28,7 +28,7 @@ deleteProvider(id: any) {
   if (confirm("Are you sure you want to delete this Provider?")){
     this.ProviderSer.deleteProviderById(id)
     .subscribe(res => {
-        this.router.navigate(['/Provider']);
+        this.router.navigate(['/LogIn']);
       }, (err) => {
         console.log(err);
       }

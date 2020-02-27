@@ -26,15 +26,19 @@
     <Key>
       <PropertyRef Name="ProviderID" />
     </Key>
-    <Property Name="ProviderID" Type="int" Nullable="false" />
+    <Property Name="ProviderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountNumber" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="255" />
     <Property Name="Address1" Type="varchar" MaxLength="255" />
     <Property Name="Address2" Type="varchar" MaxLength="255" />
     <Property Name="Address3" Type="varchar" MaxLength="255" />
     <Property Name="Country" Type="varchar" MaxLength="255" />
     <Property Name="City" Type="varchar" MaxLength="255" />
-    <Property Name="Phone" Type="int" />
-    <Property Name="Fax" Type="int" />
+    <Property Name="State" Type="varchar" MaxLength="255" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="10" />
+    <Property Name="Timezone" Type="varchar" MaxLength="255" />
+    <Property Name="Phone" Type="varchar" MaxLength="10" />
+    <Property Name="Fax" Type="varchar" MaxLength="10" />
     <Property Name="Email" Type="varchar" MaxLength="255" />
     <Property Name="UserID" Type="int" />
   </EntityType>
@@ -45,8 +49,9 @@
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="255" />
   </EntityType>
-  <Association Name="FK__Contacts__Provid__45F365D3">
+  <Association Name="FK__Contacts__Provid__571DF1D5">
     <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
     <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -58,7 +63,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Notes__ProviderI__3D5E1FD2">
+  <Association Name="FK__Notes__ProviderI__5441852A">
     <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
     <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
     <ReferentialConstraint>
@@ -70,7 +75,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Providers__UserI__4316F928">
+  <Association Name="FK__Providers__UserI__5165187F">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="Providers" Type="Self.Providers" Multiplicity="*" />
     <ReferentialConstraint>
@@ -87,15 +92,15 @@
     <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Contacts__Provid__45F365D3" Association="Self.FK__Contacts__Provid__45F365D3">
+    <AssociationSet Name="FK__Contacts__Provid__571DF1D5" Association="Self.FK__Contacts__Provid__571DF1D5">
       <End Role="Providers" EntitySet="Providers" />
       <End Role="Contacts" EntitySet="Contacts" />
     </AssociationSet>
-    <AssociationSet Name="FK__Notes__ProviderI__3D5E1FD2" Association="Self.FK__Notes__ProviderI__3D5E1FD2">
+    <AssociationSet Name="FK__Notes__ProviderI__5441852A" Association="Self.FK__Notes__ProviderI__5441852A">
       <End Role="Providers" EntitySet="Providers" />
       <End Role="Notes" EntitySet="Notes" />
     </AssociationSet>
-    <AssociationSet Name="FK__Providers__UserI__4316F928" Association="Self.FK__Providers__UserI__4316F928">
+    <AssociationSet Name="FK__Providers__UserI__5165187F" Association="Self.FK__Providers__UserI__5165187F">
       <End Role="Users" EntitySet="Users" />
       <End Role="Providers" EntitySet="Providers" />
     </AssociationSet>

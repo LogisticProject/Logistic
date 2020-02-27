@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="logistic1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="logistic1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Contacts">
           <Key>
             <PropertyRef Name="ID" />
@@ -31,15 +31,19 @@
           <Key>
             <PropertyRef Name="ProviderID" />
           </Key>
-          <Property Name="ProviderID" Type="int" Nullable="false" />
+          <Property Name="ProviderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
           <Property Name="Address1" Type="varchar" MaxLength="255" />
           <Property Name="Address2" Type="varchar" MaxLength="255" />
           <Property Name="Address3" Type="varchar" MaxLength="255" />
           <Property Name="Country" Type="varchar" MaxLength="255" />
           <Property Name="City" Type="varchar" MaxLength="255" />
-          <Property Name="Phone" Type="int" />
-          <Property Name="Fax" Type="int" />
+          <Property Name="State" Type="varchar" MaxLength="255" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="10" />
+          <Property Name="Timezone" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="Fax" Type="varchar" MaxLength="10" />
           <Property Name="Email" Type="varchar" MaxLength="255" />
           <Property Name="UserID" Type="int" />
         </EntityType>
@@ -50,8 +54,9 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="255" />
         </EntityType>
-        <Association Name="FK__Contacts__Provid__45F365D3">
+        <Association Name="FK__Contacts__Provid__571DF1D5">
           <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
           <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -63,7 +68,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Notes__ProviderI__3D5E1FD2">
+        <Association Name="FK__Notes__ProviderI__5441852A">
           <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
           <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -75,7 +80,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Providers__UserI__4316F928">
+        <Association Name="FK__Providers__UserI__5165187F">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Providers" Type="Self.Providers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -92,21 +97,20 @@
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Contacts__Provid__45F365D3" Association="Self.FK__Contacts__Provid__45F365D3">
+          <AssociationSet Name="FK__Contacts__Provid__571DF1D5" Association="Self.FK__Contacts__Provid__571DF1D5">
             <End Role="Providers" EntitySet="Providers" />
             <End Role="Contacts" EntitySet="Contacts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Notes__ProviderI__3D5E1FD2" Association="Self.FK__Notes__ProviderI__3D5E1FD2">
+          <AssociationSet Name="FK__Notes__ProviderI__5441852A" Association="Self.FK__Notes__ProviderI__5441852A">
             <End Role="Providers" EntitySet="Providers" />
             <End Role="Notes" EntitySet="Notes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Providers__UserI__4316F928" Association="Self.FK__Providers__UserI__4316F928">
+          <AssociationSet Name="FK__Providers__UserI__5165187F" Association="Self.FK__Providers__UserI__5165187F">
             <End Role="Users" EntitySet="Users" />
             <End Role="Providers" EntitySet="Providers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="logistic1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -145,13 +149,17 @@
           <Property Name="Address3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="Int32" />
-          <Property Name="Fax" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UserID" Type="Int32" />
           <NavigationProperty Name="Contacts" Relationship="Self.FK__Contacts__Provid__45F365D3" FromRole="Providers" ToRole="Contacts" />
           <NavigationProperty Name="Notes" Relationship="Self.FK__Notes__ProviderI__3D5E1FD2" FromRole="Providers" ToRole="Notes" />
           <NavigationProperty Name="User" Relationship="Self.FK__Providers__UserI__4316F928" FromRole="Providers" ToRole="Users" />
+          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Timezone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -161,6 +169,7 @@
           <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Providers" Relationship="Self.FK__Providers__UserI__4316F928" FromRole="Users" ToRole="Providers" />
+          <Property Name="Token" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Contacts__Provid__45F365D3">
           <End Role="Providers" Type="Self.Provider" Multiplicity="0..1" />
@@ -249,6 +258,10 @@
           <EntitySetMapping Name="Providers">
             <EntityTypeMapping TypeName="logistic1Model.Provider">
               <MappingFragment StoreEntitySet="Providers">
+                <ScalarProperty Name="Timezone" ColumnName="Timezone" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
                 <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address1" ColumnName="Address1" />
@@ -266,6 +279,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="logistic1Model.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

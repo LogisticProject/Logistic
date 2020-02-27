@@ -11,7 +11,8 @@ namespace LogiApi.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Provider
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,15 +29,20 @@ namespace LogiApi.Models
         public string Address3 { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
-        public Nullable<int> Phone { get; set; }
-        public Nullable<int> Fax { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
         public string Email { get; set; }
         public Nullable<int> UserID { get; set; }
+        public string AccountNumber { get; set; }
+        public string State { get; set; }
+        public string Zipcode { get; set; }
+        public string Timezone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contact> Contacts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Note> Notes { get; set; }
+        [NotMapped]
         public virtual User User { get; set; }
     }
 }

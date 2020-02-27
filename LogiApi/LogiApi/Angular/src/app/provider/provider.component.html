@@ -20,6 +20,9 @@
         ID: {{provider.ProviderID}}
       </tr>
       <tr>
+        AccountNumber: {{provider.AccountNumber}}
+      </tr>
+      <tr>
         Provider Name : {{provider.Name}}
       </tr>
       <tr>
@@ -34,8 +37,17 @@
       <tr>
       Country : {{provider.Country}}
     </tr>
+    <tr>
+      State: {{provider.State}}
+    </tr>
       <tr>
       City : {{provider.City}}
+    </tr>
+    <tr>
+      Zipcode: {{provider.Zipcode}}
+    </tr>
+    <tr>
+      Timezone: {{provider.Timezone}}
     </tr>
       <tr>
         Phone : {{provider.Phone}}
@@ -49,7 +61,7 @@
   </table>
 
   <mat-card-actions>
-      <a mat-raised-button class="buttonStyle" color="primary">Edit</a>
+      <a mat-raised-button class="buttonStyle" color="primary" [routerLink]="['/EditProvider/', provider.ProviderID]">Edit</a>
       <a mat-raised-button color="primary" (click)="deleteProvider(provider.ProviderID)"> Delete </a>
 </mat-card-actions>
 
